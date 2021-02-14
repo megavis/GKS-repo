@@ -7,7 +7,7 @@ resource "google_compute_instance" "vm_instance" {
   boot_disk {
     initialize_params {
       image = "ubuntu-os-cloud/ubuntu-1804-bionic-v20201014"
-      size = 50GB
+      size = 50
     }
   }
 
