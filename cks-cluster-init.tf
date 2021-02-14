@@ -12,7 +12,7 @@ resource "google_compute_instance" "vm_instance" {
     }
   }
 
-  metadata_startup_script = "sudo bash -c 'bash <(curl -s https://raw.githubusercontent.com/killer-sh/cks-course-environment/master/cluster-setup/latest/install_master.sh)'"
+  metadata_startup_script = "sudo bash -c 'bash <(curl -s https://raw.githubusercontent.com/killer-sh/cks-course-environment/master/cluster-setup/latest/install_master.sh) >> /var/log/setup-node.log 2>&1'"
 
   network_interface {
     # A default network is created for all GCP projects
@@ -33,7 +33,7 @@ resource "google_compute_instance" "vm_instance" {
     }
   }
 
-  metadata_startup_script = "sudo bash -c 'bash <(curl -s https://raw.githubusercontent.com/killer-sh/cks-course-environment/master/cluster-setup/latest/install_worker.sh)'"
+  metadata_startup_script = "sudo bash -c 'bash <(curl -s https://raw.githubusercontent.com/killer-sh/cks-course-environment/master/cluster-setup/latest/install_worker.sh) >> /var/log/setup-node.log 2>&1'"
 
   network_interface {
     # A default network is created for all GCP projects
