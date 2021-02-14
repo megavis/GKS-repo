@@ -1,7 +1,7 @@
 variable "gcp_config" {
 }
 
-resource "google_compute_instance" "vm_instance" {
+resource "google_compute_instance" "vm_instance_master" {
   name         = "master-node"
   machine_type = "e2-medium"
 
@@ -22,7 +22,7 @@ resource "google_compute_instance" "vm_instance" {
   }
 }
 
-resource "google_compute_instance" "vm_instance" {
+resource "google_compute_instance" "vm_instance_worker" {
   name         = "worker-node"
   machine_type = "e2-medium"
 
