@@ -1,5 +1,4 @@
 variable "gcp_config" {
-  
 }
 
 resource "google_compute_instance" "vm_instance_master" {
