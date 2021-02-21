@@ -1,7 +1,7 @@
 variable "gcp_config" {
 }
 
-variable "worker_nodes {
+variable "worker_nodes" {
   default = toset([ "worker1", "worker2" ])
 }
 
