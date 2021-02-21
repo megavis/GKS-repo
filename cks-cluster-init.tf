@@ -1,8 +1,8 @@
 variable "gcp_config" {
 }
 
-variable "worker_nodes" {
-  default = toset([ "worker1", "worker2" ])
+locals {
+  worker_nodes = toset([ "worker1", "worker2" ])
 }
 
 resource "google_compute_instance" "vm_instance_master" {
@@ -27,7 +27,7 @@ resource "google_compute_instance" "vm_instance_master" {
 }
 
 resource "google_compute_instance" "vm_instance_worker" {
-  for_each     = var.worker_nodes
+  for_each     = locals.worker_nodes
   name         = "${each.value}-node"
   machine_type = "e2-medium"
 
