@@ -1,6 +1,10 @@
 variable "gcp_config" {
 }
 
+variable "worker_nodes {
+  default = toset([ "worker1", "worker2" ])
+}
+
 resource "google_compute_instance" "vm_instance_master" {
   name         = "master-node"
   machine_type = "e2-medium"
@@ -23,7 +27,8 @@ resource "google_compute_instance" "vm_instance_master" {
 }
 
 resource "google_compute_instance" "vm_instance_worker" {
-  name         = "worker-node"
+  for_each     = var.worker_nodes
+  name         = "${each.value}-node"
   machine_type = "e2-medium"
 
   boot_disk {
@@ -42,3 +47,4 @@ resource "google_compute_instance" "vm_instance_worker" {
     }
   }
 }
+
