@@ -27,7 +27,7 @@ resource "google_compute_instance" "vm_instance_master" {
 }
 
 resource "google_compute_instance" "vm_instance_worker" {
-  for_each     = locals.worker_nodes
+  for_each     = local.worker_nodes
   name         = "${each.value}-node"
   machine_type = "e2-medium"
 
