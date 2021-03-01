@@ -2,7 +2,8 @@ variable "gcp_config" {
 }
 
 locals {
-  worker_nodes = toset([ "worker1", "worker2" ])
+  worker_nodes = toset([ "worker1" ])
+#  worker_nodes = toset([ "worker1", "worker2" ])
 }
 
 resource "google_compute_instance" "vm_instance_master" {
